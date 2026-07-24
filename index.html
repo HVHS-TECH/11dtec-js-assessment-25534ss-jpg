@@ -3,488 +3,486 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Krish's Kingdom of Artifacts</title>
+    <title>Krish's Kingdom of Artifacts</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
-
 <body>
 
+    <nav>
 
-<nav>
+        <div class="name">
+            Krish's Kingdom of Artifacts
+        </div>
 
-<div class="name">
-Krish's Kingdom of Artifacts
-</div>
+        <ul>
 
+            <li>
+                <a href="#products">
+                    Shop
+                </a>
+            </li>
 
-<ul>
 
-<li>
-<a href="#products">
-Shop
-</a>
-</li>
+            <li>
 
+                <a href="cart.html" class="cart-btn">
 
-<li>
+                    Cart (<span id="navCount">0</span>)
 
-<a href="cart.html" class="cart-btn">
+                </a>
 
-Cart (<span id="navCount">0</span>)
+            </li>
 
-</a>
+        </ul>
 
-</li>
+    </nav>
 
-</ul>
+    <section class="start">
 
-</nav>
 
-<section class="start">
+        <h1>
+            Every product has its past
+        </h1>
 
 
-<h1>
-Every product has its past
-</h1>
+        <p>
+            Collect cursed relics and forgotten artifacts
+        </p>
 
 
-<p>
-Collect cursed relics and forgotten artifacts
-</p>
+    </section>
 
+    <section class="products" id="products">
 
-</section>
 
-<section class="products" id="products">
+        <h2>
+            Featured Objects
+        </h2>
 
 
-<h2>
-Featured Objects
-</h2>
 
+        <input type="text" id="search" placeholder="Search artifacts...">
 
+        <div class="filters">
 
-<input type="text" id="search" placeholder="Search artifacts...">
 
-<div class="filters">
+            <button onclick="filterProducts('all')">
+                All
+            </button>
 
 
-<button onclick="filterProducts('all')">
-All
-</button>
+            <button onclick="filterProducts('diamond')">
+                Diamonds
+            </button>
 
 
-<button onclick="filterProducts('diamond')">
-Diamonds
-</button>
+            <button onclick="filterProducts('book')">
+                Books
+            </button>
 
 
-<button onclick="filterProducts('book')">
-Books
-</button>
+            <button onclick="filterProducts('cursed')">
+                Cursed
+            </button>
 
 
-<button onclick="filterProducts('cursed')">
-Cursed
-</button>
+            <button onclick="filterProducts('crystal')">
+                Crystals
+            </button>
 
 
-<button onclick="filterProducts('crystal')">
-Crystals
-</button>
+            <button onclick="filterProducts('mysterious')">
+                Mysterious
+            </button>
 
 
-<button onclick="filterProducts('mysterious')">
-Mysterious
-</button>
+        </div>
 
 
-</div>
 
 
 
 
+        <div class="grid">
 
 
-<div class="grid">
 
 
 
 
 
+            <div class="card" data-type="diamond cursed">
 
+                <img src="oorlov.png">
 
-<div class="card" data-type="diamond cursed">
+                <div class="content">
 
-<img src="oorlov.png">
+                    <h3>
+                        Black Oorlov
+                    </h3>
 
-<div class="content">
+                    <p>
+                        The diamond earned its infamous reputation due to mysterious tragedies.
+                    </p>
 
-<h3>
-Black Oorlov
-</h3>
 
-<p>
-The diamond earned its infamous reputation due to mysterious tragedies.
-</p>
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
 
 
-<div class="rating">
-★★★★☆
-</div>
+                    <div class="price">
+                        $242.99
+                    </div>
 
 
-<div class="price">
-$242.99
-</div>
+                    <button class="buy" onclick="addItem('Black Oorlov',242.99)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Black Oorlov',242.99)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="diamond cursed">
 
+                <img src="dim.png">
 
-<div class="card" data-type="diamond cursed">
 
-<img src="dim.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        Hope Diamond
+                    </h3>
 
 
-<h3>
-Hope Diamond
-</h3>
+                    <p>
+                        Dooms its owners to tragic deaths and misfortune.
+                    </p>
 
 
-<p>
-Dooms its owners to tragic deaths and misfortune.
-</p>
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
 
 
-<div class="rating">
-★★★★☆
-</div>
+                    <div class="price">
+                        $168.67
+                    </div>
 
 
-<div class="price">
-$168.67
-</div>
+                    <button class="buy" onclick="addItem('Hope Diamond',168.67)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Hope Diamond',168.67)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="cursed mysterious">
 
 
-<div class="card" data-type="cursed mysterious">
+                <img src="mtr.png">
 
 
-<img src="mtr.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        Mirror That Remembers
+                    </h3>
 
 
-<h3>
-Mirror That Remembers
-</h3>
+                    <p>
+                        Said to remember every person it has seen.
+                    </p>
 
 
-<p>
-Said to remember every person it has seen.
-</p>
+                    <div class="rating">
+                        ★★★★★
+                    </div>
 
 
-<div class="rating">
-★★★★★
-</div>
+                    <div class="price">
+                        $67.67
+                    </div>
 
 
-<div class="price">
-$67.67
-</div>
+                    <button class="buy" onclick="addItem('Mirror That Remembers',67.67)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Mirror That Remembers',67.67)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="book cursed">
 
 
-<div class="card" data-type="book cursed">
+                <img src="book.png">
 
 
-<img src="book.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        Voynich Manuscript Also known as the book of history
+                    </h3>
 
 
-<h3>
-Voynich Manuscript Also known as the book of history
-</h3>
+                    <p>
+                        The mysterious book nobody can read. Said to be Written with ancient language no one can
+                        understand.
+                    </p>
 
 
-<p>
-The mysterious book nobody can read. Said to be Written with ancient language no one can understand.
-</p>
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
 
 
-<div class="rating">
-★★★★☆
-</div>
+                    <div class="price">
+                        $44.99
+                    </div>
 
 
-<div class="price">
-$44.99
-</div>
+                    <button class="buy" onclick="addItem('Voynich Manuscript',44.99)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Voynich Manuscript',44.99)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="cursed mysterious">
 
 
-<div class="card" data-type="cursed mysterious">
+                <img src="the_codex_gigas.png">
 
 
-<img src="the_codex_gigas.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        The Codex Gigas
+                    </h3>
 
 
-<h3>
-The Codex Gigas
-</h3>
+                    <p>
+                        The largest medieval manuscript famous for its mysterious history.
+                    </p>
 
 
-<p>
-The largest medieval manuscript famous for its mysterious history.
-</p>
+                    <div class="rating">
+                        ★★★★★
+                    </div>
 
 
-<div class="rating">
-★★★★★
-</div>
+                    <div class="price">
+                        $120.00
+                    </div>
 
 
-<div class="price">
-$120.00
-</div>
+                    <button class="buy" onclick="addItem('The Codex Gigas',120)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('The Codex Gigas',120)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="cursed mysterious">
 
 
-<div class="card" data-type="cursed mysterious">
+                <img src="ouija.png">
 
 
-<img src="ouija.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        Ouija Board
+                    </h3>
 
 
-<h3>
-Ouija Board
-</h3>
+                    <p>
+                        A mysterious talking board.
+                    </p>
 
 
-<p>
-A mysterious talking board.
-</p>
+                    <div class="rating">
+                        ★★★★★
+                    </div>
 
 
-<div class="rating">
-★★★★★
-</div>
+                    <div class="price">
+                        $55.99
+                    </div>
 
 
-<div class="price">
-$55.99
-</div>
+                    <button class="buy" onclick="addItem('Ouija Board',55.99)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Ouija Board',55.99)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="book cursed">
 
 
-<div class="card" data-type="book cursed">
+                <img src="dybbok.png">
 
 
-<img src="dybbok.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        Dybbuk
+                    </h3>
 
 
-<h3>
-Dybbuk
-</h3>
+                    <p>
+                        Pretty mysterious. Think twice before buying this thing.
+                    </p>
 
 
-<p>
-Pretty mysterious. Think twice before buying this thing.
-</p>
+                    <div class="rating">
+                        ★★★★☆
+                    </div>
 
 
-<div class="rating">
-★★★★☆
-</div>
+                    <div class="price">
+                        $37.99
+                    </div>
 
 
-<div class="price">
-$37.99
-</div>
+                    <button class="buy" onclick="addItem('Dybbuk',37.99)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Dybbuk',37.99)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
 
 
+            <div class="card" data-type="crystal">
 
 
-<div class="card" data-type="crystal">
+                <img src="citrine.png">
 
 
-<img src="citrine.png">
+                <div class="content">
 
 
-<div class="content">
+                    <h3>
+                        Citrine
+                    </h3>
 
 
-<h3>
-Citrine
-</h3>
+                    <p>
+                        Known as the Merchant's Stone.
+                    </p>
 
 
-<p>
-Known as the Merchant's Stone.
-</p>
+                    <div class="rating">
+                        ★★★★★★★★
+                    </div>
 
 
-<div class="rating">
-★★★☆☆
-</div>
+                    <div class="price">
+                        $67.67
+                    </div>
 
 
-<div class="price">
-$67.67
-</div>
+                    <button class="buy" onclick="addItem('Citrine',67.67)">
+                        Add To Cart
+                    </button>
 
 
-<button class="buy" onclick="addItem('Citrine',67.67)">
-Add To Cart
-</button>
+                </div>
 
+            </div>
 
-</div>
 
-</div>
 
 
 
 
+        </div>
 
 
-</div>
+    </section>
 
 
-</section>
 
 
 
-
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 
 </body>
