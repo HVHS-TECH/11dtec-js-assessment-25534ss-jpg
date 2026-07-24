@@ -1,256 +1,225 @@
-function addItem(name, price) {
-    var cart = localStorage.getItem("cart");
+function addItem(name,price){
+    var cart=JSON.parse(localStorage.getItem("cart"));
 
-    if (cart == null) {
-        cart = "";
+    if(cart==null){
+        cart=[];
     }
 
-    cart += name + "," + price + "\n";
+    var found=false;
 
-    localStorage.setItem("cart", cart);
+    for(var i=0;i<cart.length;i++){
+
+        if(cart[i].name==name){
+
+            cart[i].quantity++;
+            found=true;
+
+        }
+
+    }
+
+    if(found==false){
+
+        cart.push({
+            name:name,
+            price:price,
+            quantity:1
+        });
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
 
     updateCartCount();
 
-    alert(name + " added to cart!");
+    alert(name+" added to cart!");
 }
 
+function filterProducts(selectedFilter) {
+    const cards = document.querySelectorAll('.grid .card');
 
-function showCart() {
-    var cart = localStorage.getItem("cart");
+    cards.forEach(card => {
+        const cardTypes = card.getAttribute('data-type');
 
-    if (cart == null) {
-        return;
-    }
-
-    var items = cart.split("\n");
-    var output = "";
-    var total = 0;
-
-    for (var i = 0; i < items.length; i++) {
-
-        if (items[i] != "") {
-
-            var info = items[i].split(",");
-            output += "<div class='cart-item'>";
-            output += "<span>" + info[0] + "</span>";
-            output += "<span>$" + Number(info[1]).toFixed(2) + "</span>";
-            output += "</div>";
-
-            total += Number(info[1]);
+        if (selectedFilter === 'all' || cardTypes.includes(selectedFilter)) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
         }
-    }
-
-    if (document.getElementById("cartItems")) {
-        document.getElementById("cartItems").innerHTML = output;
-    }
-
-    if (document.getElementById("total")) {
-        document.getElementById("total").innerHTML = total.toFixed(2);
-    }
-}
-
-
-function clearCart() {
-    localStorage.removeItem("cart");
-    location.reload();
-}
-
-
-function checkout() {
-
-    var email = document.getElementById("customerEmail").value;
-
-    if (email == "") {
-        alert("Please enter your email.");
-        return;
-    }
-
-    var cart = localStorage.getItem("cart");
-
-    if (cart == null || cart == "") {
-        alert("Your cart is empty.");
-        return;
-    }
-
-    var items = cart.split("\n");
-    var receipt = "";
-    var total = 0;
-
-    for (var i = 0; i < items.length; i++) {
-
-        if (items[i] != "") {
-
-            var info = items[i].split(",");
-
-            receipt += info[0] + " - $" + info[1] + "\n";
-
-            total += Number(info[1]);
-        }
-    }
-
-
-    var templateParams = {
-    email: email,
-    orders: receipt,
-    order_id: "001",
-    name: "Artifacts",
-    price: total.toFixed(2),
-    units: "1"
-};
-
-    emailjs.send(
-        "service_ab12345",
-        "template_zqfaon5",
-        templateParams
-    )
-    .then(function() {
-
-        alert("Receipt sent! Thank you for your purchase.");
-
-        clearCart();
-
-    })
-    .catch(function(error) {
-
-        console.log(error);
-
-        alert("Receipt failed to send.");
-
     });
 }
 
 
-function updateCartCount() {
+function showCart(){
 
-    var cart = localStorage.getItem("cart");
+    var cart=JSON.parse(localStorage.getItem("cart"));
 
-    if (cart == null) {
-        cart = "";
+    if(cart==null){
+        return;
     }
 
-    var items = cart.split("\n");
-    var count = 0;
+    var output="";
+    var total=0;
 
-    for (var i = 0; i < items.length; i++) {
+    for(var i=0;i<cart.length;i++){
 
-        if (items[i] != "") {
-            count++;
-        }
+        var itemTotal=cart[i].price*cart[i].quantity;
+
+        output+="<div class='cart-item'>";
+        output+="<span>"+cart[i].name+" x"+cart[i].quantity+"</span>";
+        output+="<span>$"+itemTotal.toFixed(2)+"</span>";
+        output+="</div>";
+
+        total+=itemTotal;
+
     }
 
+    if(document.getElementById("cartItems")){
 
-    if (document.getElementById("navCount")) {
-        document.getElementById("navCount").innerHTML = count;
+        document.getElementById("cartItems").innerHTML=output;
+
     }
+
+    if(document.getElementById("total")){
+
+        document.getElementById("total").innerHTML=total.toFixed(2);
+
+    }
+
 }
 
 
-var filter = "all";
+function updateCartCount(){
 
+    var cart=JSON.parse(localStorage.getItem("cart"));
 
-function filterProducts(type) {
+    var count=0;
 
-    filter = type;
+    if(cart!=null){
 
-    searchProducts();
+        for(var i=0;i<cart.length;i++){
 
-}
-
-
-function searchProducts() {
-
-    var text = "";
-
-    if (document.getElementById("search")) {
-
-        text = document
-            .getElementById("search")
-            .value
-            .toLowerCase();
-
-    }
-
-
-    var products = document.querySelectorAll(".card");
-
-
-    for (var i = 0; i < products.length; i++) {
-
-        var name = products[i]
-            .querySelector("h3")
-            .innerText
-            .toLowerCase();
-
-
-        var category = products[i].getAttribute("data-type");
-
-
-        var searchMatch = name.includes(text);
-
-
-        var filterMatch =
-            filter == "all" ||
-            category.includes(filter);
-
-
-        if (searchMatch && filterMatch) {
-
-            products[i].style.display = "block";
-
-        } else {
-
-            products[i].style.display = "none";
+            count+=cart[i].quantity;
 
         }
+
     }
+
+    if(document.getElementById("navCount")){
+
+        document.getElementById("navCount").innerHTML=count;
+
+    }
+
+}
+
+
+function clearCart(){
+
+    localStorage.removeItem("cart");
+
+    location.reload();
+
 }
 
 
-if (document.getElementById("search")) {
+function giveReceipt(){
 
-    document
-        .getElementById("search")
-        .addEventListener("keyup", function() {
+    var cart=JSON.parse(localStorage.getItem("cart"));
 
-            searchProducts();
+    if(cart==null||cart.length==0){
 
-        });
-
-}
-function calculateBalance(){
-
-    var payment = Number(document.getElementById("paymentAmount").value);
-
-    var total = Number(document.getElementById("total").innerHTML);
-
-
-    if(payment <= 0){
-
-        alert("Enter a valid amount.");
+        alert("Cart is empty.");
 
         return;
 
     }
 
+    var receipt="Krish's Kingdom of Artifacts\n\n";
+    var total=0;
 
-    var balance = payment - total;
 
+    for(var i=0;i<cart.length;i++){
 
-    if(balance < 0){
+        var itemTotal=cart[i].price*cart[i].quantity;
 
-        document.getElementById("balance").innerHTML =
-        "You still owe: $" + Math.abs(balance).toFixed(2);
+        receipt+=cart[i].name+" x"+cart[i].quantity+" - $"+itemTotal.toFixed(2)+"\n";
+
+        total+=itemTotal;
 
     }
 
-    else{
 
-        document.getElementById("balance").innerHTML =
-        "Your balance is: $" + balance.toFixed(2);
+    receipt+="\nTotal: $"+total.toFixed(2);
+
+    alert(receipt);
+
+}
+function checkGame(){
+
+    var cart=JSON.parse(localStorage.getItem("cart"));
+
+    var amount=0;
+
+
+    if(cart!=null){
+
+        for(var i=0;i<cart.length;i++){
+
+            amount+=cart[i].quantity;
+
+        }
+
+    }
+
+
+    if(amount>=6){
+
+        if(document.getElementById("gameButton")){
+
+            document.getElementById("gameButton").style.display="block";
+
+        }
 
     }
 
 }
 
+function startGame(){
+    var score=0;
+
+    while(score<2){
+        var guess=prompt("Ancient Artifact Trial\nGuess the number 1-5");
+        var answer=Math.floor(Math.random()*5)+1;
+
+        if(Number(guess)==answer){
+            score++;
+            alert("Correct "+score+"/2");
+        }
+        else{
+            alert("Wrong");
+        }
+    }
+
+    if(score==2){
+        jumpscare();
+    }
+}
+
+function jumpscare() {
+    var scare = document.createElement("div");
+    scare.id = "scare";
+
+    scare.innerHTML = "<video width='100%' height='100%' autoplay src='drdonut.mp4'></video>" + 
+                      "<button onclick='goBack()' style='position:absolute; bottom:20px;'>Leave Artifact</button>";
+    
+    document.body.appendChild(scare);
+}
+
+
+function goBack(){
+    window.location.href="index.html";
+}
 showCart();
 updateCartCount();
+checkGame();

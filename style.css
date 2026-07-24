@@ -102,6 +102,10 @@ a {
     color: white;
 }
 
+.hidden{
+    display:none
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -254,7 +258,54 @@ a {
     font-size: 20px;
     margin: 10px 0;
 }
+#secretGame{
+    margin-top:40px;
+    padding:20px;
+    background:#111;
+    border:1px solid #5b3a82;
+    border-radius:10px;
+    text-align:center;
+}
 
+#secretGame h2{
+    font-family:Cinzel;
+    color:#d4af37;
+}
+
+#secretGame p{
+    color:#ccc;
+}
+
+#gameButton{
+    display:none;
+}
+
+#scare {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 9999; /* Ensures it sits on top of everything else */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#scare video {
+    object-fit: cover; /* Stretches video to fill screen without distortion */
+}
+
+
+#scare button{
+    position:absolute;
+    bottom:30px;
+    padding:12px 20px;
+    background:#5b3a82;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
 @media (max-width: 600px) {
 
     nav {

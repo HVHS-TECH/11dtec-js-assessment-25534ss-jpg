@@ -3,46 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Your Cart</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<link rel="icon" type="image/png" href="logo.png">
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
 emailjs.init("KFqPcb7S0L3wzXW9V");
 </script>
+
 </head>
 
 <body>
 
 <nav>
-<div class="name">Krish's Kingdom of Artifacts</div>
-<a href="index.html" class="cart-btn">Back To Shop</a>
+
+<div class="name">
+Krish's Kingdom of Artifacts
+</div>
+
+<a href="index.html" class="cart-btn">
+Back To Shop
+</a>
+
 </nav>
+
 
 <div class="cart-page">
 
 <h1>Your Cart</h1>
 
+
 <div id="cartItems"></div>
+
 
 <div class="summary">
 
-<h2>Total: $<span id="total">0.00</span></h2>
+
+<h2>
+Total: $<span id="total">0.00</span>
+</h2>
+
+
 
 <div class="payment-box">
+
 <input id="paymentAmount" type="number" placeholder="Enter payment amount">
-<button onclick="calculateBalance()" class="btn">Check Balance</button>
+
+<button onclick="calculateBalance()" class="btn">
+Check Balance
+</button>
+
+
 <h3 id="balance"></h3>
+
+
 </div>
+
+
 
 <input type="email" id="customerEmail" placeholder="Enter email for receipt">
 
-<button onclick="checkout()" class="btn">Checkout</button>
-<button onclick="clearCart()" class="btn danger">Clear Cart</button>
+
+
+<button onclick="checkout()" class="btn">
+Checkout
+</button>
+
+
+<button onclick="giveReceipt()" class="btn">
+Give Receipt
+</button>
+
+
+<button onclick="clearCart()" class="btn danger">
+Clear Cart
+</button>
+
 
 </div>
 
+
+
+<div id="secretGame">
+
+<h2>
+Unknown Artifact
+</h2>
+
+<p>
+A strange artifact appeared...
+</p>
+
+
+<button id="gameButton" onclick="startGame()" class="btn">
+Inspect Artifact
+</button>
+
+
 </div>
+
+
+</div>
+
+
 
 <script src="script.js"></script>
 
