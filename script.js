@@ -89,6 +89,7 @@ function showCart(){
 }
 
 
+
 function updateCartCount(){
 
     var cart=JSON.parse(localStorage.getItem("cart"));
@@ -216,6 +217,41 @@ function jumpscare() {
     document.body.appendChild(scare);
 }
 
+
+function calculateBalance(){
+
+    var payment = Number(document.getElementById("paymentAmount").value);
+
+    var total = Number(document.getElementById("total").innerHTML);
+
+
+    if(payment <= 0){
+
+        alert("Enter a valid amount.");
+
+        return;
+
+    }
+
+
+    var balance = payment - total;
+
+
+    if(balance < 0){
+
+        document.getElementById("balance").innerHTML =
+        "You still owe: $" + Math.abs(balance).toFixed(2);
+
+    }
+
+    else{
+
+        document.getElementById("balance").innerHTML =
+        "Your balance is: $" + balance.toFixed(2);
+
+    }
+
+}
 
 function goBack(){
     window.location.href="index.html";
